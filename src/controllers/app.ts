@@ -1,9 +1,9 @@
-import { Controller, Get, Param, UseBefore, UseAfter, UseInterceptor, Action, Post, OnUndefined, Body } from 'routing-controllers';
+import { JsonController, Get, Param, UseBefore, UseAfter, UseInterceptor, Action, Post, OnUndefined, Body } from 'routing-controllers';
 import 'reflect-metadata';
 import { hookBefore, hookAfter } from '../middlewares';
 import { AppModel } from '../models';
 
-@Controller()
+@JsonController()
 @UseBefore(hookBefore)
 @UseInterceptor((action: Action, content: any) => {
   console.log('change response...');
