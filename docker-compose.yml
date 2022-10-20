@@ -11,8 +11,8 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     volumes:
-      - /usr/src/expressapp/node_modules
       - ./src:/usr/src/expressapp/src
+      - /usr/src/expressapp/node_modules
     env_file:
       - .env
     environment:

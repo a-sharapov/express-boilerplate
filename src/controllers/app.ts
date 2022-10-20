@@ -1,6 +1,7 @@
-import { Controller, Get, Param, UseBefore, UseAfter, UseInterceptor, Action } from 'routing-controllers';
+import { Controller, Get, Param, UseBefore, UseAfter, UseInterceptor, Action, Post, OnUndefined, Body } from 'routing-controllers';
 import 'reflect-metadata';
 import { hookBefore, hookAfter } from '../middlewares';
+import { AppModel } from '../models';
 
 @Controller()
 @UseBefore(hookBefore)
@@ -9,7 +10,6 @@ import { hookBefore, hookAfter } from '../middlewares';
   return content;
 })
 @UseAfter(hookAfter)
-
 export class AppController {
   @Get('/')
   getAll () {
@@ -19,5 +19,11 @@ export class AppController {
   @Get('/:id')
   getOne (@Param('id') id: number) {
     return 'This action returns #' + id;
+  }
+
+  @Post('/')
+  @OnUndefined(204)
+  postOne (@Body() app: AppModel) {
+    console.log(JSON.stringify(app));
   }
 }

@@ -1,3 +1,9 @@
+import ErrorHandler from "./errorHandler";
+
+export {
+    ErrorHandler,
+}
+
 export const hookBefore = (req: Request, res: Response, next?: (err?: typeof Error) => void): any => {
     console.log("hookBefore");
     next();
