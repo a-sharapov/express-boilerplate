@@ -2,7 +2,7 @@ import { JsonController, Get, Param, UseBefore, UseAfter, UseInterceptor, Action
 import 'reflect-metadata';
 import { hookBefore, hookAfter } from '../middlewares';
 import { AppValidator } from '../validators';
-import { logger } from '../';
+import { logger } from "../utils";
 
 @JsonController()
 @UseBefore(hookBefore)
@@ -19,7 +19,7 @@ export class AppController {
 
   @Get('/:id')
   getOne (@Param('id') id: number) {
-    return 'This action returns #' + id;
+    return `This action returns #${id}`;
   }
 
   @Post('/')

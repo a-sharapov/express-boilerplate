@@ -1,7 +1,6 @@
 import express, { Express, RequestHandler } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import log4js from 'log4js';
 import bodyParser from 'body-parser';
 import { useExpressServer } from 'routing-controllers';
 import { AppController } from './controllers';
@@ -9,6 +8,7 @@ import { ErrorHandler } from './middlewares';
 import httpContext from 'express-http-context';
 import { MOTD } from './constants';
 import { responseWithRoutes } from './routes';
+import { logger } from './utils';
 
 const app: Express = express();
 
@@ -17,8 +17,6 @@ app.use(bodyParser.json() as RequestHandler);
 app.use(httpContext.middleware as RequestHandler);
 
 dotenv.config();
-export const logger = log4js.getLogger();
-logger.level = process.env.LOG_LEVEL;
 
 responseWithRoutes({
   app,

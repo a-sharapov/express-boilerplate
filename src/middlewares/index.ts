@@ -1,5 +1,5 @@
+import { logger } from "../utils";
 import ErrorHandler from "./errorHandler.global";
-import { logger } from "../";
 
 export {
     ErrorHandler,
