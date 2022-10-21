@@ -19,8 +19,26 @@ services:
       CHOKIDAR_USEPOLLING: true
       DANGEROUSLY_DISABLE_HOST_CHECK: true
     ports:
-      - "${PORT}:${PORT}"
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
     stdin_open: true
     restart: on-failure
+    networks:
+      - WebApp
+
+  postgres:
+    container_name: express-postgres
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    restart: on-failure
+    volumes:
+      - /var/lib/postgresql/data
+      - ./Docker/db/dump.sql:/docker-entrypoint-initdb.d/1-init.sql
     networks:
       - WebApp
