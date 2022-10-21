@@ -1,8 +1,19 @@
-import { JsonController, Get, Param, UseBefore, UseAfter, UseInterceptor, Action, Post, OnUndefined, Body } from 'routing-controllers';
+import {
+  JsonController,
+  Get,
+  Param,
+  UseBefore,
+  UseAfter,
+  UseInterceptor,
+  Action,
+  Post,
+  OnUndefined,
+  Body
+} from 'routing-controllers';
 import 'reflect-metadata';
-import { hookBefore, hookAfter } from '../middlewares';
-import { AppValidator } from '../validators';
-import { logger } from "../utils";
+import { hookBefore, hookAfter } from 'src/middlewares';
+import { AppValidator } from 'src/validators';
+import { logger } from 'src/utils';
 
 @JsonController()
 @UseBefore(hookBefore)
@@ -13,18 +24,18 @@ import { logger } from "../utils";
 @UseAfter(hookAfter)
 export class AppController {
   @Get('/')
-  getAll () {
+  getAll() {
     return 'Works!';
   }
 
   @Get('/:id')
-  getOne (@Param('id') id: number) {
+  getOne(@Param('id') id: number) {
     return `This action returns #${id}`;
   }
 
   @Post('/')
   @OnUndefined(204)
-  postOne (@Body() app: AppValidator) {
+  postOne(@Body() app: AppValidator) {
     console.log(JSON.stringify(app));
   }
 }

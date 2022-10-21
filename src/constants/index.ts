@@ -1,5 +1,3 @@
-import { MOTD } from "./motd";
+import { MOTD } from './motd';
 
-export {
-    MOTD,
-}
+export { MOTD };

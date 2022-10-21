@@ -1,5 +1,3 @@
-import { AppController } from "./app.controller";
+import { AppController } from './app.controller';
 
-export {
-    AppController,
-}
+export { AppController };

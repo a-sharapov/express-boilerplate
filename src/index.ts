@@ -21,7 +21,7 @@ dotenv.config();
 responseWithRoutes({
   app,
   apiVersion: process.env.API_VERSION,
-})
+});
 
 useExpressServer(app, {
   routePrefix: `/api/${process.env.API_VERSION}/`,
