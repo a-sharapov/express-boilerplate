@@ -7,29 +7,23 @@ import { useExpressServer } from 'routing-controllers';
 import { AppController } from './controllers';
 import { ErrorHandler } from './middlewares';
 import httpContext from 'express-http-context';
-import swaggerUi from 'swagger-ui-express';
-import * as swaggerDocument from './swagger.json';
 import { MOTD } from './constants';
+import { responseWithRoutes } from './routes';
 
 const app: Express = express();
-const redirectToApi = (_, response) => {
-  response.redirect(`/api/${process.env.API_VERSION}/`);
-}
 
 app.use(cors() as RequestHandler);
 app.use(bodyParser.json() as RequestHandler);
 app.use(httpContext.middleware as RequestHandler);
 
 dotenv.config();
-const logger = log4js.getLogger();
+export const logger = log4js.getLogger();
 logger.level = process.env.LOG_LEVEL;
 
-app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.get('/api/v1/health', (_, response) => {
-  response.sendFile('health.html', { root: `${__dirname}/views/` });
-});
-app.get('/', redirectToApi);
-app.get('/api', redirectToApi);
+responseWithRoutes({
+  app,
+  apiVersion: process.env.API_VERSION,
+})
 
 useExpressServer(app, {
   routePrefix: `/api/${process.env.API_VERSION}/`,

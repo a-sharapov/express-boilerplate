@@ -4,8 +4,7 @@ import express, { RequestHandler } from "express";
 import { useExpressServer } from "routing-controllers";
 import { ErrorHandler } from "../../src/middlewares";
 import { AppController } from "../../src/controllers";
-import { AppModel } from "../../src/models";
-
+import { AppValidator } from "../../src/validators";
 
 describe("Test of AppController", () => {
   let server;
@@ -30,7 +29,7 @@ describe("Test of AppController", () => {
     const body = {
       id: "null",
     }
-    const response = await appController.postOne(body as AppModel);
+    const response = await appController.postOne(body as AppValidator);
 
     expect(response).toBeUndefined();
   });
@@ -41,7 +40,7 @@ describe("Test of AppController", () => {
     }
     request(server)
       .post("/api/v1/")
-      .send(body as AppModel)
+      .send(body as AppValidator)
       .expect(204)
       .end((error, response) => {
         if (error) {

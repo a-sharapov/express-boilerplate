@@ -1,4 +1,4 @@
-import { AppController } from "./app";
+import { AppController } from "./app.controller";
 
 export {
     AppController,

@@ -1,12 +1,13 @@
 import { JsonController, Get, Param, UseBefore, UseAfter, UseInterceptor, Action, Post, OnUndefined, Body } from 'routing-controllers';
 import 'reflect-metadata';
 import { hookBefore, hookAfter } from '../middlewares';
-import { AppModel } from '../models';
+import { AppValidator } from '../validators';
+import { logger } from '../';
 
 @JsonController()
 @UseBefore(hookBefore)
 @UseInterceptor((action: Action, content: any) => {
-  console.log('change response...');
+  logger.warn(`Trigger of the hook interceptor: ${action.request.method} ${action.request.url}`);
   return content;
 })
 @UseAfter(hookAfter)
@@ -23,7 +24,7 @@ export class AppController {
 
   @Post('/')
   @OnUndefined(204)
-  postOne (@Body() app: AppModel) {
+  postOne (@Body() app: AppValidator) {
     console.log(JSON.stringify(app));
   }
 }

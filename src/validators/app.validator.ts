@@ -1,6 +1,6 @@
 import { IsDefined } from "class-validator";
 
-export default class AppModel {
+export default class AppValidator {
   @IsDefined()
   id: string;
 }
