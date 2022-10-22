@@ -17,22 +17,29 @@ export const MOTD = () => {
     '\x1b[32m✓\x1b[0m',
     'Swagger ',
     '\x1b[32m✓\x1b[0m',
-    'Jest '
+    'Jest ',
+    '\x1b[32m✓\x1b[0m',
+    'GraphQL '
   );
   console.log('');
   console.log('\x1b[30m%s\x1b[0m', '⸻');
   console.log(
     `And is now available: 📌 %s`,
-    `\x1b[33m${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}/api/v1/\x1b[0m`
+    `\x1b[33m${process.env.PROTOCOL}://${process.env.HOST}:${process.env.BACKEND_PORT}/api/v1/\x1b[0m`
   );
   console.log('\x1b[30m%s\x1b[0m', '⸻');
   console.log(
     `Health: 📌 %s`,
-    `\x1b[33m${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}/api/v1/health\x1b[0m`
+    `\x1b[33m${process.env.PROTOCOL}://${process.env.HOST}:${process.env.BACKEND_PORT}/api/v1/health\x1b[0m`
   );
   console.log(
     `Docs: 📌 %s`,
-    `\x1b[33m${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}/api/v1/docs\x1b[0m`
+    `\x1b[33m${process.env.PROTOCOL}://${process.env.HOST}:${process.env.BACKEND_PORT}/api/v1/docs\x1b[0m`
   );
+  process.env.NODE_ENV === 'development' &&
+    console.log(
+      `GraphiQL: 📌 %s`,
+      `\x1b[33m${process.env.PROTOCOL}://${process.env.HOST}:${process.env.BACKEND_PORT}/api/v1/graphql\x1b[0m`
+    );
   console.log('');
 };
