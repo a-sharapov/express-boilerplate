@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { logger } from 'src/utils';
+import { logger } from 'utils';
 import ErrorHandler from './errorHandler.global';
 
 export { ErrorHandler };

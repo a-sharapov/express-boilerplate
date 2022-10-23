@@ -3,21 +3,20 @@
     "strict": true,
     "target": "es6",
     "outDir": "dist",
-    "baseUrl": ".",
-    "rootDir": ".",
+    "baseUrl": "src",
     "lib": ["es7"],
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "removeComments": true,
-    "preserveConstEnums": true
+    "removeComments": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "test"],
+  "exclude": ["node_modules", "test"],
   "sourceMap": true
 }

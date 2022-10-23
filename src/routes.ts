@@ -4,7 +4,7 @@ import path from 'path';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
 import { graphqlHTTP } from 'express-graphql';
-import { schema } from 'src/db';
+import { schema } from 'db';
 dotenv.config();
 
 interface InitProps {

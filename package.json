@@ -4,10 +4,10 @@
   "description": "Lightweight TypeScript based backend boilerplate",
   "main": "index.js",
   "scripts": {
-    "build": "rm -fr ./dist && tsc -p ./tsconfig.json && cp -r ./src/views ./dist/src/views",
-    "start": "cross-env NODE_PATH=./dist node --experimental-specifier-resolution=node ./dist/src/index.js",
+    "build": "rm -fr ./dist && tsc -p ./tsconfig.json && cp -r ./src/views ./dist/views",
+    "start": "cross-env NODE_PATH=./dist node ./dist/index.js",
     "prestart": "cross-env NODE_PATH=./ npm run build",
-    "server:watch": "cross-env NODE_PATH=./ ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "server:watch": "cross-env NODE_PATH=./src ts-node-dev --respawn --transpile-only ./src/index.ts",
     "prebuild": "npm run lint",
     "lint": "eslint --cache --ext .ts .",
     "lint:fix": "eslint --cache --ext .ts . --fix",

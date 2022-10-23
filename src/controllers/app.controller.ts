@@ -11,9 +11,9 @@ import {
   Body
 } from 'routing-controllers';
 import 'reflect-metadata';
-import { hookBefore, hookAfter } from 'src/middlewares';
-import { AppValidator } from 'src/validators';
-import { logger } from 'src/utils';
+import { hookBefore, hookAfter } from 'middlewares';
+import { AppValidator } from 'validators';
+import { logger } from 'utils';
 
 @JsonController()
 @UseBefore(hookBefore)
