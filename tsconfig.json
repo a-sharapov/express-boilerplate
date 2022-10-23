@@ -2,19 +2,22 @@
   "compilerOptions": {
     "strict": true,
     "target": "es6",
-    "esModuleInterop": true,
     "outDir": "dist",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "lib": ["es7"],
+    "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "baseUrl": "./",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "removeComments": true,
+    "preserveConstEnums": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "test"],
   "sourceMap": true
 }

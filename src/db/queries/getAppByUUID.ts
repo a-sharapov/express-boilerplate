@@ -1,12 +1,12 @@
-import { GraphQLString } from 'graphql';
-import { AppType } from '../types';
+import { GraphQLFieldConfig, GraphQLString } from 'graphql';
+import { AppType, IResolverArgumetns } from '../types';
 import DB from '..';
 
-const getAppByUUID = {
+const getAppByUUID: GraphQLFieldConfig<any, any, IResolverArgumetns> = {
   type: AppType,
-  args: { id: { type: GraphQLString } },
-  resolve(parent, { id }) {
-    return DB().select().from('app').where('uuid', id).first();
+  args: { uuid: { type: GraphQLString } },
+  resolve(parent, { uuid }) {
+    return DB().select().from('app').where(uuid).first();
   }
 };
 

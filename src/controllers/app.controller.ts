@@ -25,17 +25,21 @@ import { logger } from 'src/utils';
 export class AppController {
   @Get('/')
   getAll() {
-    return 'Works!';
+    return {
+      message: 'Works!'
+    };
   }
 
   @Get('/:id')
   getOne(@Param('id') id: number) {
-    return `This action returns #${id}`;
+    return {
+      message: `This action returns #${id}`
+    };
   }
 
   @Post('/')
   @OnUndefined(204)
   postOne(@Body() app: AppValidator) {
-    console.log(JSON.stringify(app));
+    return JSON.stringify(app);
   }
 }

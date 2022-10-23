@@ -1,3 +1,6 @@
 import AppType from './appType';
+interface IResolverArgumetns {
+  [argName: string]: any;
+}
 
-export { AppType };
+export { IResolverArgumetns, AppType };

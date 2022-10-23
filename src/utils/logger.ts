@@ -3,6 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const logger = log4js.getLogger();
-logger.level = process.env.LOG_LEVEL;
+logger.level = process.env.LOG_LEVEL as string;
 
 export default logger;

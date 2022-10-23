@@ -1,10 +1,10 @@
-import { GraphQLList } from 'graphql';
-import { AppType } from '../types';
+import { GraphQLFieldConfig, GraphQLList } from 'graphql';
+import { AppType, IResolverArgumetns } from '../types';
 import DB from '..';
 
-const getAllApps = {
+const getAllApps: GraphQLFieldConfig<any, any, IResolverArgumetns> = {
   type: new GraphQLList(AppType),
-  resolve(parent, args) {
+  resolve() {
     return DB().select().from('app');
   }
 };

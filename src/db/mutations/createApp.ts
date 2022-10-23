@@ -1,8 +1,8 @@
-import { GraphQLString } from 'graphql';
-import { AppType } from '../types';
+import { GraphQLFieldConfig, GraphQLString } from 'graphql';
+import { AppType, IResolverArgumetns } from '../types';
 import DB from '..';
 
-const createApp = {
+const createApp: GraphQLFieldConfig<any, any, IResolverArgumetns> = {
   type: AppType,
   args: {
     name: { type: GraphQLString },

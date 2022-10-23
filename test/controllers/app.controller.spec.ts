@@ -1,13 +1,13 @@
 import bodyParser from 'body-parser';
 import request from 'supertest';
-import express, { RequestHandler } from 'express';
+import express, { Express, RequestHandler } from 'express';
 import { useExpressServer } from 'routing-controllers';
 import { ErrorHandler } from 'src/middlewares';
 import { AppController } from 'src/controllers';
 import { AppValidator } from 'src/validators';
 
 describe('Test of AppController', () => {
-  let server;
+  let server: Express;
 
   afterEach(() => {
     jest.clearAllMocks();
